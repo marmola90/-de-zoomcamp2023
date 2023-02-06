@@ -22,9 +22,12 @@ def clean(df=pd.DataFrame)-> pd.DataFrame:
 @task()
 def write_local(df:pd.DataFrame,color:str, dataset_file:str)-> Path:
     """Write DataFrame out locally as parquet file"""
-    path=Path(f"C:/Users/amarmol/OneDrive - Comisión Nacional de Bancos y Seguros (CNBS)/Documentos/Proyectos/de-zoomcamp/-de-zoomcamp2023/week 2/data/{color}/{dataset_file}.parquet").as_posix() 
-    df.to_parquet(path, compression="gzip")
-    return path
+    path_file=f"{dataset_file}.parquet"
+    path_dir=Path(f"data/{color}")
+    path_dir.mkdir(parents=True, exist_ok=True)
+    #path=Path(f"C:/Users/amarmol/OneDrive - Comisión Nacional de Bancos y Seguros (CNBS)/Documentos/Proyectos/de-zoomcamp/-de-zoomcamp2023/week 2/data/{color}/{dataset_file}.parquet").as_posix() 
+    df.to_parquet(path_dir / path_file, compression="gzip")
+    return path_dir / path_file
 
 @task()
 def remote_path(color:str,data_file:str)-> Path:
