@@ -19,7 +19,7 @@ def clean(df=pd.DataFrame)-> pd.DataFrame:
     print(f"columns: {df.dtypes}")
     print(f"rows: {len(df)}")
     return df
-@task()
+@task(retries=3)
 def write_local(df:pd.DataFrame,color:str, dataset_file:str)-> Path:
     """Write DataFrame out locally as parquet file"""
     path_file=f"{dataset_file}.parquet"
