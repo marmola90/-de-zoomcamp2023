@@ -8,7 +8,7 @@ github_block = GitHub.load("zoom-gitbloack")
 
 github_dep=Deployment.build_from_flow(
     flow=etl_web_to_gcs,
-    name='github_flow',
+    name='github_flow2',
     storage=github_block
     # infrastructure=docker_block
 )
