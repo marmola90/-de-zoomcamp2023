@@ -10,5 +10,8 @@ github_dep=Deployment.build_from_flow(
     storage=github_block
 )
 
+github_block.get_directory('~/OneDrive - Comisión Nacional de Bancos y Seguros (CNBS)/Documentos/Proyectos/de-zoomcamp/-de-zoomcamp2023/week2')
+github_block.save()
+
 if __name__=='__main__':
     github_dep.apply()
