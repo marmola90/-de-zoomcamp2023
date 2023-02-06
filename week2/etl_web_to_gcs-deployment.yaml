@@ -1,0 +1,48 @@
+###
+### A complete description of a Prefect Deployment for flow 'etl-web-to-gcs'
+###
+name: GithubStorega
+description: The main ETL function
+version: 4d1824b2ffda34aa4a23796623d90858
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+tags: []
+parameters: {}
+schedule: null
+infra_overrides: {}
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: etl-web-to-gcs
+manifest_path: null
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  _block_document_id: fc837652-956e-4072-9b08-e7c78b72c956
+  _block_document_name: anonymous-99824fdf-48f2-4dda-b861-ff677394e5f9
+  _is_anonymous: true
+  block_type_slug: process
+  _block_type_slug: process
+storage:
+  repository: https://github.com/marmola90/-de-zoomcamp2023/tree/main/week2/
+  reference: null
+  access_token: null
+  _block_document_id: c18d2300-4701-4fa9-9279-294d0972b58b
+  _block_document_name: zoom-gitbloack
+  _is_anonymous: false
+  block_type_slug: github
+  _block_type_slug: github
+path: ''
+entrypoint: etl_web_to_gcs.py:etl_web_to_gcs
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties: {}
+  required: null
+  definitions: null
