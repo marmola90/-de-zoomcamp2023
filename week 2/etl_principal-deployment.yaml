@@ -1,0 +1,60 @@
+###
+### A complete description of a Prefect Deployment for flow 'etl-principal'
+###
+name: GCSBIGQUERY
+description: Main Flow
+version: c0a07188de172952304f0b567753853f
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+tags: []
+parameters: {}
+schedule: null
+infra_overrides: {}
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: etl-principal
+manifest_path: null
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  _block_document_id: 81663860-261b-4c6a-9b1b-ad92239ae607
+  _block_document_name: anonymous-5d0a003c-e502-4127-83c2-8e592287cebc
+  _is_anonymous: true
+  block_type_slug: process
+  _block_type_slug: process
+storage: null
+path: "C:\\Users\\amarmol\\OneDrive - Comisi\xF3n Nacional de Bancos y Seguros (CNBS)\\\
+  Documentos\\Proyectos\\de-zoomcamp\\-de-zoomcamp2023\\week 2"
+entrypoint: etl_gcs_to_bq.py:etl_principal
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties:
+    color:
+      title: color
+      default: yellow
+      position: 0
+      type: string
+    months:
+      title: months
+      default:
+      - 2
+      - 3
+      position: 1
+      type: array
+      items:
+        type: integer
+    year:
+      title: year
+      default: 2020
+      position: 2
+      type: integer
+  required: null
+  definitions: null
