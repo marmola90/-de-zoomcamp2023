@@ -28,7 +28,7 @@ def write_local(df:pd.DataFrame,color:str, dataset_file:str)-> Path:
     # path_file=f"{dataset_file}.parquet"
     # path_dir=Path(f"data/{color}")
     # path_dir.mkdir(parents=True, exist_ok=True)
-    path=Path(f"C:/Users/amarmol/OneDrive - Comisión Nacional de Bancos y Seguros (CNBS)/Documentos/Proyectos/de-zoomcamp/-de-zoomcamp2023/week 2/data/{color}/{dataset_file}.parquet").as_posix() 
+    path=Path(f"C:/Users/amarmol/OneDrive - Comisión Nacional de Bancos y Seguros (CNBS)/Documentos/Proyectos/de-zoomcamp/-de-zoomcamp2023/week2/data/{color}/{dataset_file}.parquet").as_posix() 
     df.to_parquet(path, compression="gzip")
     return path
 
