@@ -19,6 +19,7 @@ def clean(df=pd.DataFrame)-> pd.DataFrame:
     df['tpep_dropoff_datetime']=pd.to_datetime(df['tpep_dropoff_datetime'])
     df['passenger_count']=df['passenger_count'].astype('int64')
     df['payment_type']=df['payment_type'].astype('int64')
+    df['RatecodeID']=df['RatecodeID'].astype('float64')
 
     #df['lpep_pickup_datetime']=pd.to_datetime(df['lpep_pickup_datetime'])
     #df['lpep_dropoff_datetime']=pd.to_datetime(df['lpep_dropoff_datetime'])
