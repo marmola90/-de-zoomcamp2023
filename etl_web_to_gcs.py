@@ -17,6 +17,7 @@ def clean(df=pd.DataFrame)-> pd.DataFrame:
     df['tpep_pickup_datetime']=pd.to_datetime(df['tpep_pickup_datetime'])
     df['tpep_dropoff_datetime']=pd.to_datetime(df['tpep_dropoff_datetime'])
     df['passenger_count']=df['passenger_count'].astype('int64')
+    df['payment_type']=df['payment_type'].astype('int64')
 
     #df['lpep_pickup_datetime']=pd.to_datetime(df['lpep_pickup_datetime'])
     #df['lpep_dropoff_datetime']=pd.to_datetime(df['lpep_dropoff_datetime'])
@@ -47,7 +48,7 @@ def write_gcs(path:Path, pathRemote:Path)-> None:
     gcs_block.upload_from_path(from_path=f"{path}",to_path=pathRemote)
     return
 
-@flow()
+@flow(retries=3)
 def etl_web_to_gcs(color:str, year:int, month:int)-> None:
     """The main ETL function"""
     dataset_file=f"{color}_tripdata_{year}-{month:02}"
