@@ -15,7 +15,7 @@ def clean(df=pd.DataFrame)-> pd.DataFrame:
     """Fix dtype issues"""
     df['tpep_pickup_datetime']=pd.to_datetime(df['tpep_pickup_datetime'])
     df['tpep_dropoff_datetime']=pd.to_datetime(df['tpep_dropoff_datetime'])
-    df['passenger_count']=pd.to_numeric(df['passenger_count'],downcast="integer")
+    df['passenger_count']=df['passenger_count'].astype('int')
 
     #df['lpep_pickup_datetime']=pd.to_datetime(df['lpep_pickup_datetime'])
     #df['lpep_dropoff_datetime']=pd.to_datetime(df['lpep_dropoff_datetime'])
