@@ -14,6 +14,7 @@ def fetch(dataset_url:str)-> pd.DataFrame:
 def clean(df=pd.DataFrame)-> pd.DataFrame:
     """Fix dtype issues"""
     df['passenger_count'].fillna(0,inplace=True)
+    df['payment_type'].fillna(0,inplace=True)
     df['tpep_pickup_datetime']=pd.to_datetime(df['tpep_pickup_datetime'])
     df['tpep_dropoff_datetime']=pd.to_datetime(df['tpep_dropoff_datetime'])
     df['passenger_count']=df['passenger_count'].astype('int64')
