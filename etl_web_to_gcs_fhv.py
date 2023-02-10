@@ -19,6 +19,7 @@ def clean(df=pd.DataFrame)-> pd.DataFrame:
     print(f"columns: {df.dtypes}")
     print(f"rows: {len(df)}")
     return df
+    
 @task(retries=3,log_prints=True)
 def write_local(df:pd.DataFrame,color:str, dataset_file:str)-> Path:
     """Write DataFrame out locally as parquet file"""
@@ -26,7 +27,7 @@ def write_local(df:pd.DataFrame,color:str, dataset_file:str)-> Path:
     # path_dir=Path(f"data/{color}")
     # path_dir.mkdir(parents=True, exist_ok=True)
     path=Path(f"C:/Users/amarmol/OneDrive - Comisión Nacional de Bancos y Seguros (CNBS)/Documentos/Proyectos/de-zoomcamp/-de-zoomcamp2023/week2/data/{color}/{dataset_file}.csv.gz").as_posix() 
-    #df.to_parquet(path, compression="gzip")
+    df.to_csv(path, compression="gzip")
     return path
 
 @task()
@@ -56,7 +57,7 @@ def etl_web_to_gcs(color:str, year:int, month:int)-> None:
     write_gcs(path,pathRemote)
 
 @flow()
-def etl_parent_flow(color:str="fhv",months:list[int]=[[1,2,3,4,5,6,7,8,9,10,11,12]],year:int=2019):
+def etl_parent_flow(color:str="fhv",months:list[int]=[1,2,3,4,5,6,7,8,9,10,11,12],year:int=2019):
     for month in months:
         etl_web_to_gcs(color,year,month)
 
