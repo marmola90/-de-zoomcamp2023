@@ -1,13 +1,26 @@
 ###
 ### A complete description of a Prefect Deployment for flow 'etl-principal'
 ###
-name: GCSBIGQUERY
+name: BigqueryData
 description: Main Flow
-version: c0a07188de172952304f0b567753853f
+version: 3a1255d9039cd5598269e3110a5821ff
 # The work queue that will handle this deployment's runs
-work_queue_name: default
+work_queue_name: test
 tags: []
-parameters: {}
+parameters:
+  months:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
 schedule: null
 infra_overrides: {}
 
@@ -24,14 +37,14 @@ infrastructure:
   command: null
   stream_output: true
   working_dir: null
-  _block_document_id: 81663860-261b-4c6a-9b1b-ad92239ae607
-  _block_document_name: anonymous-5d0a003c-e502-4127-83c2-8e592287cebc
+  _block_document_id: c483c65f-c0b8-4b48-b3f8-8c7a65205845
+  _block_document_name: anonymous-40f32feb-0acb-4fb6-b398-740828655f03
   _is_anonymous: true
   block_type_slug: process
   _block_type_slug: process
 storage: null
 path: "C:\\Users\\amarmol\\OneDrive - Comisi\xF3n Nacional de Bancos y Seguros (CNBS)\\\
-  Documentos\\Proyectos\\de-zoomcamp\\-de-zoomcamp2023\\week 2"
+  Documentos\\Proyectos\\de-zoomcamp\\-de-zoomcamp2023\\week2"
 entrypoint: etl_gcs_to_bq.py:etl_principal
 parameter_openapi_schema:
   title: Parameters
@@ -39,22 +52,23 @@ parameter_openapi_schema:
   properties:
     color:
       title: color
-      default: yellow
+      default: green
       position: 0
       type: string
+    year:
+      title: year
+      default: 2019
+      position: 1
+      type: integer
     months:
       title: months
       default:
+      - 1
       - 2
       - 3
-      position: 1
+      position: 2
       type: array
       items:
         type: integer
-    year:
-      title: year
-      default: 2020
-      position: 2
-      type: integer
   required: null
   definitions: null

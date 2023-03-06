@@ -16,14 +16,16 @@ def clean(df=pd.DataFrame)-> pd.DataFrame:
     df['passenger_count'].fillna(0,inplace=True)
     df['payment_type'].fillna(0,inplace=True)
     df['VendorID'].fillna(0,inplace=True)
-    df['tpep_pickup_datetime']=pd.to_datetime(df['tpep_pickup_datetime'])
-    df['tpep_dropoff_datetime']=pd.to_datetime(df['tpep_dropoff_datetime'])
+    df['trip_type'].fillna(0,inplace=True)
+    #df['tpep_pickup_datetime']=pd.to_datetime(df['tpep_pickup_datetime'])
+    #df['tpep_dropoff_datetime']=pd.to_datetime(df['tpep_dropoff_datetime'])
     df['passenger_count']=df['passenger_count'].astype('int64')
     df['payment_type']=df['payment_type'].astype('int64')
     df['RatecodeID']=df['RatecodeID'].astype('float64')
+    df['trip_type']=df['trip_type'].astype('float64')
     df['VendorID']=df['VendorID'].astype('int64')
-    #df['lpep_pickup_datetime']=pd.to_datetime(df['lpep_pickup_datetime'])
-    #df['lpep_dropoff_datetime']=pd.to_datetime(df['lpep_dropoff_datetime'])
+    df['lpep_pickup_datetime']=pd.to_datetime(df['lpep_pickup_datetime'])
+    df['lpep_dropoff_datetime']=pd.to_datetime(df['lpep_dropoff_datetime'])
     print(df.head(2))
     print(f"columns: {df.dtypes}")
     print(f"rows: {len(df)}")
@@ -70,7 +72,7 @@ def etl_parent_flow(color:str="yellow",months:list[int]=[1,2],year:int=2020):
         etl_web_to_gcs(color,year,month)
 
 if __name__== '__main__':
-    color="yellow"
-    months=[1,2,3]
-    year=2020
+    color="green"
+    months=[1,2,3,4,5,6,7,8,9,10,11,12]
+    year=2019
     etl_parent_flow(color,months,year)
